@@ -1,5 +1,4 @@
 import matplotlib
-matplotlib.use('agg')
 
 #### Parameters you can adjust to your liking
 USE_TEX = True      # whether or not to render *all* text w/latex

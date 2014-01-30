@@ -1,14 +1,21 @@
-# beauty - make beautiful plots in matplotlib
+# beauty — make matplotlib beautiful
 
-This module will make your matplotlib plots more beautiful.
+This module will make your matplotlib plots more beautiful. It also includes
+various utility functions for performing common plot-beautifying tasks (such as
+removing axes, rescaling axes, etc.).
 
-It also includes various utility functions for performing common
-plot-beautifying tasks (such as removing axes, rescaling axes, etc.).
+Most plotting functions (`plot`, `hist`, `errorbar`, `bar`) automatically change
+to use the colors specified here, but `scatter` doesn't. For `scatter`, you can
+use `beauty.scatter` just like you would `plt.scatter`.
 
-By default, it uses LaTeX to render all text. This typically causes
-a slowdown in producing text, especially for the first figure of a
-session. You can prevent this by setting the `USE_TEX` flag at the top
-to `False`.
+By default, it uses LaTeX to render all text. This typically causes a slowdown
+in producing text (labels, titles, etc.), especially for the first figure of a
+session. You can prevent this by setting the `USE_TEX` flag at the top to
+`False`.
+
+In order to get the most out of your plots (especially when using
+subplots), I recommend calling `plt.tight_layout()` to make matplotlib
+optimize your plots.
 
 ### Example:
     import beauty
