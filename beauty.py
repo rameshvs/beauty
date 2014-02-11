@@ -4,11 +4,17 @@ import matplotlib
 USE_TEX = True      # whether or not to render *all* text w/latex
 USE_SERIFS = True   # serif vs san-serif font (computer modern)
 LEGEND_FONT_SIZE = TICK_FONT_SIZE = 9
-TITLE_FONT_SIZE = LABEL_FONT_SIZE = TICK_FONT_SIZE + 1.5
+TITLE_FONT_SIZE = LABEL_FONT_SIZE = 10.5
 
+DPI = 150 # Font size adjustments should scale with this
 
 #### Automatic parameter setting
-matplotlib.rc('figure', dpi=150, figsize=(2,2))
+# Figure size/scale
+matplotlib.rc('savefig', dpi=DPI)
+matplotlib.rc('figure', dpi=DPI, figsize=(2,2))
+# colors
+matplotlib.rc('patch', edgecolor='none')
+# Font
 matplotlib.rc('xtick',labelsize=TICK_FONT_SIZE)
 matplotlib.rc('ytick',labelsize=TICK_FONT_SIZE)
 matplotlib.rc('axes', labelsize=LABEL_FONT_SIZE, titlesize=TITLE_FONT_SIZE)
@@ -72,11 +78,15 @@ matplotlib.rc('axes',
 def scatter(x, y, **kwargs):
     """ Like plt.scatter, but with nicer default color & transparency """
     import matplotlib.pyplot as plt
-    if 'c' not in kwargs:
-        kwargs['c'] = blue
-    if 'alpha' not in kwargs:
-        kwargs['alpha'] = 0.95
-    plt.scatter(x, y, edgecolors='none', **kwargs)
+    kwargs.setdefault('c', 'blue')
+    kwargs.setdefault('alpha', 0.95)
+    kwargs.setdefault('edgecolors', 'none')
+    plt.scatter(x, y, **kwargs)
+
+def bar(left, height, **kwargs):
+    """ Like plt.bar, but with edge lines off by default """
+    kwargs.setdefault('edgecolors', 'none')
+    plt.bar(left, height, **kwargs)
 
 def equalize_axes():
     import matplotlib.pyplot as plt
