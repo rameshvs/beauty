@@ -2,7 +2,7 @@ import matplotlib
 
 #### Parameters you can adjust to your liking
 USE_TEX = True      # whether or not to render *all* text w/latex
-USE_SERIFS = True   # serif vs san-serif font (computer modern)
+USE_SERIFS = False   # serif vs san-serif font (computer modern)
 LEGEND_FONT_SIZE = TICK_FONT_SIZE = 9
 TITLE_FONT_SIZE = LABEL_FONT_SIZE = 10.5
 
@@ -12,8 +12,6 @@ DPI = 150 # Font size adjustments should scale with this
 # Figure size/scale
 matplotlib.rc('savefig', dpi=DPI)
 matplotlib.rc('figure', dpi=DPI, figsize=(2,2))
-# colors
-matplotlib.rc('patch', edgecolor='none')
 # Font
 matplotlib.rc('xtick',labelsize=TICK_FONT_SIZE)
 matplotlib.rc('ytick',labelsize=TICK_FONT_SIZE)
@@ -73,12 +71,12 @@ darkcyan = dim(cyan, 0.75)
 # Same as matlab/matplotlib for the first few, but diverges to match category10
 # TODO consider not using green & red so early on (colorblindness)
 matplotlib.rc('axes',
-        color_cycle=[blue, green, red, orange, cyan, purple, yellow, pink])
+        color_cycle=[blue, green, orange, red, cyan, purple, yellow, pink])
 
 def scatter(x, y, **kwargs):
     """ Like plt.scatter, but with nicer default color & transparency """
     import matplotlib.pyplot as plt
-    kwargs.setdefault('c', 'blue')
+    kwargs.setdefault('c', blue)
     kwargs.setdefault('alpha', 0.95)
     kwargs.setdefault('edgecolors', 'none')
     plt.scatter(x, y, **kwargs)
