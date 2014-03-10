@@ -17,6 +17,10 @@ In order to get the most out of your plots (especially when using
 subplots), I recommend calling `plt.tight_layout()` to make matplotlib
 optimize your plots.
 
+### Demos
+For demos (with code samples), see the
+[https://github.com/rameshvs/beauty/wiki](wiki).
+
 ### Example:
     import beauty
     import matplotlib.pyplot as plt
@@ -34,4 +38,4 @@ optimize your plots.
 
 ### Things to adjust
 
-At the top, adjust `USE_TEX`, `USE_SERIFS`, and other variables to your liking.
+At the top of `beauty.py`, adjust `USE_TEX`, `USE_SERIFS`, and other variables to your liking.
