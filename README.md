@@ -19,7 +19,7 @@ optimize your plots.
 
 ### Demos
 For demos (with code samples), see the
-[https://github.com/rameshvs/beauty/wiki](wiki).
+[wiki](https://github.com/rameshvs/beauty/wiki).
 
 ### Example:
     import beauty
