@@ -27,7 +27,6 @@ matplotlib.rcParams.update({'text.usetex':USE_TEX})
 
 ### Colors modeled after d3.js's `category10` color scale
 ### (defined like this so it's easy to use 'beauty.blue' as a color)
-blue = '#1f77b4'
 darkblue = dim(blue, 0.75)
 
 orange = '#ff7f0e'

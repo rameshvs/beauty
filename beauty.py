@@ -1,5 +1,7 @@
 import matplotlib
 
+blue = '#1f77b4'
+
 def dim(color, factor):
     """
     Dims a color (in #rrggbb hex form) by the factor given (float from 0-1):
@@ -21,10 +23,15 @@ def scatter(x, y, **kwargs):
     kwargs.setdefault('edgecolors', 'none')
     plt.scatter(x, y, **kwargs)
 
-def bar(left, height, **kwargs):
-    """ Like plt.bar, but with edge lines off by default """
-    kwargs.setdefault('edgecolors', 'none')
-    plt.bar(left, height, **kwargs)
+def stem(x, y, linecolor=blue, markercolor=blue, **kwargs):
+    """
+    Like plt.stem, but with nicer colors. Extra kwargs: linecolor & markercolor
+    """
+    import matplotlib.pyplot as plt
+    (markerline, stemline, baseline) = plt.stem(x, y, **kwargs)
+    plt.setp(stemline, 'color', linecolor)
+    plt.setp(markerline, 'color', markercolor)
+    return (markerline, stemline, baseline)
 
 def equalize_axes():
     import matplotlib.pyplot as plt
