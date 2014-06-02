@@ -1,31 +1,5 @@
 import matplotlib
 
-#### Parameters you can adjust to your liking
-USE_TEX = True      # whether or not to render *all* text w/latex
-USE_SERIFS = False   # serif vs san-serif font (computer modern)
-LEGEND_FONT_SIZE = TICK_FONT_SIZE = 9
-TITLE_FONT_SIZE = LABEL_FONT_SIZE = 10.5
-
-DPI = 150 # Font size adjustments should scale with this
-
-#### Automatic parameter setting
-# Figure size/scale
-matplotlib.rc('savefig', dpi=DPI)
-matplotlib.rc('figure', dpi=DPI, figsize=(2,2))
-# Font
-matplotlib.rc('xtick',labelsize=TICK_FONT_SIZE)
-matplotlib.rc('ytick',labelsize=TICK_FONT_SIZE)
-matplotlib.rc('axes', labelsize=LABEL_FONT_SIZE, titlesize=TITLE_FONT_SIZE)
-matplotlib.rc('legend', fontsize=LEGEND_FONT_SIZE)
-
-if USE_SERIFS:
-    matplotlib.rc('font', **{'family':'serif', 'serif':['Computer Modern Roman']})
-else:
-    matplotlib.rc('font', **{'family':'sans-serif', 'sans-serif':['Computer Modern Sans serif']})
-    if USE_TEX:
-        matplotlib.rcParams['text.latex.preamble'].append('\usepackage{sfmath}')
-matplotlib.rcParams.update({'text.usetex':USE_TEX})
-
 def dim(color, factor):
     """
     Dims a color (in #rrggbb hex form) by the factor given (float from 0-1):
@@ -38,40 +12,6 @@ def dim(color, factor):
     for c in (r,g,b):
         out += '%02x' % int(int(c, 16) * factor)
     return out
-
-### Colors modeled after d3.js's `category10` color scale
-### (defined like this so it's easy to use 'beauty.blue' as a color)
-blue = '#1f77b4'
-darkblue = dim(blue, 0.75)
-
-orange = '#ff7f0e'
-darkorange = dim(orange, 0.75)
-
-green =  '#2ca02c'
-darkgreen = dim(green, 0.75)
-
-red =  '#d62728'
-darkred = dim(red, 0.75)
-
-purple = '#9467bd'
-darkpurple = dim(purple, 0.75)
-
-brown = '#8c564b'
-darkbrown = dim(brown, 0.75)
-
-pink = '#e377c2'
-darkpink = dim(pink, 0.75)
-
-yellow =  '#bcbd22'
-darkyellow = dim(yellow, 0.75)
-
-cyan = '#17becf'
-darkcyan = dim(cyan, 0.75)
-
-# Same as matlab/matplotlib for the first few, but diverges to match category10
-# TODO consider not using green & red so early on (colorblindness)
-matplotlib.rc('axes',
-        color_cycle=[blue, green, orange, red, cyan, purple, yellow, pink])
 
 def scatter(x, y, **kwargs):
     """ Like plt.scatter, but with nicer default color & transparency """
@@ -95,13 +35,6 @@ def equalize_axes():
     plt.axis(bounds)
     return bounds
 
-def change_xlimits(axis, xmin, xmax):
-    ax = axis.axis()
-    axis.axis([xmin, xmax, ax[2], ax[3]])
-
-def change_ylimits(axis, ymin, ymax):
-    ax = axis.axis()
-    axis.axis([ax[0], ax[1], ymin, ymax])
 def x_axis_only(axis):
     """ Removes the axis lines on the top and right/left sides """
     for (location, spine) in axis.spines.items():
