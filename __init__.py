@@ -54,6 +54,8 @@ darkyellow = dim(yellow, 0.75)
 cyan = '#17becf'
 darkcyan = dim(cyan, 0.75)
 
+gray = '#c7c7c7'
+
 # Similar to matlab/matplotlib for the first few, but diverges to match category10,
 # and avoids using both red and green together too early
 matplotlib.rc('axes',
