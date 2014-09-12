@@ -1,25 +1,24 @@
 # beauty — make matplotlib beautiful
 
-This module will make your matplotlib plots more beautiful. It also includes
+This package will make your matplotlib plots more beautiful. It also includes
 various utility functions for performing common plot-beautifying tasks (such as
 removing axes, rescaling axes, etc.).
 
 Most plotting functions (`plot`, `hist`, `errorbar`, `bar`) automatically change
-to use the colors specified here, but `scatter` doesn't. For `scatter`, you can
-use `beauty.scatter` just like you would `plt.scatter`.
+to use the colors specified here, but `scatter` and `stem` don't. You can
+use `beauty.scatter` and `beauty.stem` just like you would `plt.scatter` and
+`plt.stem`, respectively.
 
-By default, it uses LaTeX to render all text. This typically causes a slowdown
-in producing text (labels, titles, etc.), especially for the first figure of a
-session. You can prevent this by setting the `USE_TEX` flag at the top to
-`False`.
+### Customization
+* You can set whether to use serif or sans-serif fonts using `beauty.set_serif`.
+  By default, it uses sans serif fonts.
 
-In order to get the most out of your plots (especially when using
-subplots), I recommend calling `plt.tight_layout()` to make matplotlib
-optimize your plots.
+* You can set whether to use LaTeX for all rendering using `beauty.set_tex`.
+  By default, it uses LaTeX for all rendering. This typically causes a slowdown
+  in producing text (labels, titles, etc.), especially for the first figure of a
+  session.
 
-### Demos
-For demos (with code samples), see the
-[wiki](https://github.com/rameshvs/beauty/wiki).
+* You can customize other parameters like font sizes using `beauty.set_font_sizes`.
 
 ### Example:
     import beauty
@@ -36,6 +35,22 @@ For demos (with code samples), see the
     plt.xlabel('$x$')
     plt.ylabel('$y$')
 
-### Things to adjust
+![First plot](https://github.com/rameshvs/beauty/wiki/lineplots.png)
+### Sample plots
+For full demos (with code samples),
+[see the wiki](https://github.com/rameshvs/beauty/wiki).
 
-At the top of `beauty.py`, adjust `USE_TEX`, `USE_SERIFS`, and other variables to your liking.
+Here's an example of the [normal distribution](http://en.wikipedia.org/wiki/Normal_distribution) along with a histogram of samples from it:
+
+![A plot of the normal distribution with samples from it](https://github.com/rameshvs/beauty/wiki/histogram.png)
+
+
+### Tips and tricks
+* In order to get the most out of your plots (especially when using subplots),
+  I recommend calling `plt.tight_layout()` to make matplotlib optimize your
+  plots.
+
+* Don't forget to use raw strings when embedding LaTeX in python strings! For
+  example, `plt.title('$\frac{x}{2}$')` won't work, but
+  `plt.title(r'$\frac{x}{2}$')` will (since Python treats `\f` in a non-raw
+  string as a formfeed character).

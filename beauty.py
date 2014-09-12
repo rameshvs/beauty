@@ -1,11 +1,9 @@
 import matplotlib
 
-blue = '#1f77b4'
-
-def dim(color, factor):
+def _dim(color, factor=.75):
     """
     Dims a color (in #rrggbb hex form) by the factor given (float from 0-1):
-    e.g., dim('#886644', 0.5) returns '#443322'
+    e.g., _dim('#886644', 0.5) returns '#443322'
     """
     r = color[1:3]
     g = color[3:5]
@@ -14,6 +12,27 @@ def dim(color, factor):
     for c in (r,g,b):
         out += '%02x' % int(int(c, 16) * factor)
     return out
+### Colors modeled after d3.js's `category10` color scale
+### (defined like this so it's easy to use 'beauty.blue', etc as a color)
+blue = '#1f77b4'
+orange = '#ff7f0e'
+green =  '#2ca02c'
+red =  '#d62728'
+purple = '#9467bd'
+brown = '#8c564b'
+pink = '#e377c2'
+yellow =  '#bcbd22'
+cyan = '#17becf'
+darkblue = _dim(blue)
+darkorange = _dim(orange)
+darkgreen = _dim(green)
+darkred = _dim(red)
+darkpurple = _dim(purple)
+darkbrown = _dim(brown)
+darkpink = _dim(pink)
+darkyellow = _dim(yellow)
+darkcyan = _dim(cyan)
+gray = '#c7c7c7'
 
 def scatter(x, y, **kwargs):
     """ Like plt.scatter, but with nicer default color & transparency """
