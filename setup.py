@@ -12,7 +12,7 @@ setup(
     description='Make your matplotlib plots more beautiful',
     long_description=open('README.md').read(),
     install_requires=[
-        "matplotlib >= 1.3"
+        "matplotlib >= 1.1"
     ],
 )
 
