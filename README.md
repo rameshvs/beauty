@@ -10,6 +10,12 @@ to use the new colors, but `scatter` and `stem` don't. You can
 use `beauty.scatter` and `beauty.stem` just like you would `plt.scatter` and
 `plt.stem`, respectively.
 
+### Installation
+
+You can install beauty using pip:
+
+    pip install git+git://github.com/rameshvs/beauty.git
+
 ### Customization
 * You can set whether to use serif or sans-serif fonts using `beauty.set_serif`.
   By default, it uses sans serif fonts (`False`).
